@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<label for="name">Name:</label>
+<input type="text" id="name" name="name" oninput="removeNumbers(this)"><br>
+<label for="age">Age:</label>
+<input type="number" id="age" name="age" ><br>
+<button onclick="addToTable()">Add</button>
+<table id="dataTable" width="100%" border="1">
+  <tr>
+    <td>No.</td>
+    <td>Name</td>
+    <td>Age</td>
+  </tr>
+</table>
+
+<script>
+  var counter = 1; // To generate the serial number
+  
+  function removeNumbers(input) {
+      // Remove all numeric characters
+      input.value = input.value.replace(/[0-9]/, '');
+  }
+
+  function addToTable() {
+      // Get the input values
+      var nameInput = document.getElementById("name").value;
+      var ageInput = document.getElementById("age").value;
+      
+      // Validate the age input
+      if (ageInput < 1 || ageInput > 100) {
+          alert("Please enter an age between 1 and 100.");
+          return;
+      }
+      
+      // Validate the name input (optional, e.g., ensure it's not empty)
+      if (nameInput.trim() === "") {
+          alert("Name cannot be empty.");
+          return;
+      }
+      
+      // Get the table
+      var table = document.getElementById("dataTable");
+      
+      // Create a new row
+      var newRow = table.insertRow();
+      
+      // Insert cells into the row
+      var cell1 = newRow.insertCell(0); // Serial number
+      var cell2 = newRow.insertCell(1); // Name
+      var cell3 = newRow.insertCell(2); // Age
+      
+      // Populate cells with input values
+      cell1.textContent = counter++;
+      cell2.textContent = nameInput;
+      cell3.textContent = ageInput;
+      
+      // Clear input fields
+      document.getElementById("name").value = "";
+      document.getElementById("age").value = "";
+  }
+</script>
+
+</body>
+</html>
