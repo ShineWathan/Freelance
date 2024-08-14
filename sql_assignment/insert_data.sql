@@ -1,6 +1,6 @@
 USE shopData;
 
-INSERT INTO salesPeople (Snum, Sname, City, Comm) 
+INSERT INTO sales_people (salesperson_id, full_name, location, commission_rate) 
 VALUES
 (1010, 'Parker', 'Paris', 0.14),
 (1020, 'Miller', 'San Francisco', 0.15),
@@ -8,7 +8,7 @@ VALUES
 (1070, 'Smith', 'Madrid', 0.16),
 (1030, 'Johnson', 'Los Angeles', 0.11);
 
-INSERT INTO customers (Cnum, Cname, City, Rating, Snum)
+INSERT INTO customer_details (customer_id, name, address, customer_rating, assigned_salesperson_id)
 VALUES
 (2010, 'Anderson', 'Paris', 120, 1010),
 (2011, 'Chen', 'Athens', 220, 1030),
@@ -18,7 +18,7 @@ VALUES
 (2015, 'Brown', 'San Francisco', 310, 1070),
 (2016, 'Davis', 'Athens', 120, 1040);
 
-INSERT INTO orders (Onum, Amt, Odate, Cnum, Snum)
+INSERT INTO sales_orders (order_id, total_amount, order_date, customer_id, salesperson_id)
 VALUES
 (3100, 25.90, '1991-01-10', 2015, 1070),
 (3101, 860.25, '1991-01-10', 2010, 1010),
